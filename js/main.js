@@ -762,29 +762,32 @@ $(document).ready(function (e) {
     'input[type="checkbox"][name="policy_days"]',
     function () {
       const isChecked = $(this).is(":checked");
+
+      // Boshqalarini o‘chir
       $('input[type="checkbox"][name="policy_days"]')
         .not(this)
         .prop("checked", false);
 
-      const isYearly = $(this).val() === "365" && isChecked;
+      // Agar tanlangan bo‘lsa
+      if (isChecked) {
+        const days = parseInt($(this).val(), 10); // Masalan: 7, 30, 365
 
-      if (isYearly) {
-        let fromDateVal = $("#from_date").val().trim();
-
+        const fromDateVal = $("#from_date").val().trim();
         if (fromDateVal) {
-          let fromDate = $.datepicker.parseDate("dd.mm.yy", fromDateVal);
-          let toDate = new Date(fromDate);
-          toDate.setDate(toDate.getDate() + 365);
+          const fromDate = $.datepicker.parseDate("dd.mm.yy", fromDateVal);
+          const toDate = new Date(fromDate);
+          toDate.setDate(toDate.getDate() + days);
 
           $("#to_date")
             .val($.datepicker.formatDate("dd.mm.yy", toDate))
             .prop("disabled", true)
             .css("cursor", "not-allowed");
 
-          $(".den").text("365");
+          $(".den").text(days);
         }
       } else {
-        $("#to_date").prop("disabled", false).css("cursor", "pointer");
+        // Checkbox o‘chirildi
+        $("#to_date").prop("disabled", false).css("cursor", "pointer").val("");
 
         $(".den").text("0");
       }
