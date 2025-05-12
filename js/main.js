@@ -755,23 +755,111 @@ $(document).ready(function (e) {
   }
 
   DatePiscers();
+  // $("#year_policy").change(function () {
+  //   if ($(this).is(":checked")) {
+  //     $('input[type="checkbox"][name="policy_days"][value="30"]')
+  //       .prop("checked", true)
+  //       .trigger("change");
+  //   } else {
+  //     $('input[type="checkbox"][name="policy_days"]')
+  //       .prop("checked", false)
+  //       .trigger("change");
+  //   }
+  // });
+  // $("#exampleCheck_first,#exampleCheck_mobile").change(function () {
+  //   if ($(this).is(":checked")) {
+  //     $('input[type="checkbox"][name="policy_days"][value="30"]')
+  //       .prop("checked", true)
+  //       .trigger("change");
+  //   } else {
+  //     $('input[type="checkbox"][name="policy_days"]')
+  //       .prop("checked", false)
+  //       .trigger("change");
+  //   }
+  // });
+  // $(document).on(
+  //   "change",
+  //   'input[type="checkbox"][name="policy_days"]',
+  //   function () {
+  //     const isChecked = $(this).is(":checked");
+  //     $('input[type="checkbox"][name="policy_days"]')
+  //       .not(this)
+  //       .prop("checked", false);
 
-  // Faqat 1ta checkbox tanlash
+  //     if (isChecked) {
+  //       const days = parseInt($(this).val(), 10);
+  //       const fromDateVal = $("#from_date").val().trim();
+  //       if (fromDateVal) {
+  //         const fromDate = $.datepicker.parseDate("dd.mm.yy", fromDateVal);
+  //         const toDate = new Date(fromDate);
+  //         toDate.setDate(toDate.getDate() + days);
+
+  //         $("#to_date")
+  //           .val($.datepicker.formatDate("dd.mm.yy", toDate))
+  //           .prop("disabled", true)
+  //           .css("cursor", "not-allowed");
+
+  //         $(".den").text(days);
+  //       }
+  //     } else {
+  //       $("#to_date").prop("disabled", false).css("cursor", "pointer").val("");
+  //       $(".den").text("0");
+  //     }
+  //   }
+  // );
+  $(".first_btn").click(function (e) {
+    if ($(window).width() <= 768) {
+      e.preventDefault();
+
+      var $promocodeItem = $(
+        ".calculating-tourist__promocodes-item:not(.first_btn)"
+      );
+      var $btnText = $(this).find(".addoptions");
+
+      $promocodeItem.slideToggle(300, function () {
+        if ($promocodeItem.is(":visible")) {
+          $promocodeItem.css("background-color", "#fff");
+          $btnText.text("Скрыть опции"); // Yopish matni
+        } else {
+          $btnText.text("Дополнительные опции"); // Boshlang‘ich matn
+        }
+      });
+      $(".calculating-tourist__promocodes-item.all_filters").hide();
+    }
+  });
+
+  $("#exampleCheck_first, #exampleCheck_mobile").change(function () {
+    // Otasidan chiqib, keyingi count_den_lists ni topamiz
+    const $policyBlock = $(this)
+      .closest(".block-text")
+      .next(".count_den_lists");
+
+    if ($(this).is(":checked")) {
+      // Faqat 30 kunlikni belgilaydi
+      $policyBlock
+        .find('input[type="checkbox"][name="policy_days"][value="30"]')
+        .prop("checked", true)
+        .trigger("change");
+    } else {
+      // Barcha kunliklarni bekor qiladi
+      $policyBlock
+        .find('input[type="checkbox"][name="policy_days"]')
+        .prop("checked", false)
+        .trigger("change");
+    }
+  });
+
   $(document).on(
     "change",
     'input[type="checkbox"][name="policy_days"]',
     function () {
       const isChecked = $(this).is(":checked");
-
-      // Boshqalarini o‘chir
       $('input[type="checkbox"][name="policy_days"]')
         .not(this)
         .prop("checked", false);
 
-      // Agar tanlangan bo‘lsa
       if (isChecked) {
-        const days = parseInt($(this).val(), 10); // Masalan: 7, 30, 365
-
+        const days = parseInt($(this).val(), 10);
         const fromDateVal = $("#from_date").val().trim();
         if (fromDateVal) {
           const fromDate = $.datepicker.parseDate("dd.mm.yy", fromDateVal);
@@ -786,9 +874,7 @@ $(document).ready(function (e) {
           $(".den").text(days);
         }
       } else {
-        // Checkbox o‘chirildi
         $("#to_date").prop("disabled", false).css("cursor", "pointer").val("");
-
         $(".den").text("0");
       }
     }
@@ -796,10 +882,8 @@ $(document).ready(function (e) {
 
   $(".nomination").click(function (e) {
     e.stopPropagation();
-
-    let $arrow = $(this).closest(".form_input").find(".arrow_down"); // Tegishli arrow_downni topish
-    let $dropdown = $(this).closest(".form_input").find(".dropdown__menu"); // Tegishli dropdownni topish
-
+    let $arrow = $(this).closest(".form_input").find(".arrow_down");
+    let $dropdown = $(this).closest(".form_input").find(".dropdown__menu");
     if ($arrow.hasClass("active")) {
       $arrow.removeClass("active");
       $dropdown.hide();
@@ -871,7 +955,7 @@ $(document).ready(function (e) {
     e.stopPropagation();
   });
 });
-$(".form-group.form-groupitem #exampleCheck1").on("change", function () {
+$(".form-group.form-groupitem #exampleCheck_first").on("change", function () {
   if ($(this).is(":checked")) {
     $(this)
       .parents(".form-group.form-groupitem")
@@ -1165,11 +1249,6 @@ function formValidation() {
       });
     }
   );
-
-  // // Tug‘ilgan sana
-  // $("#exampleInputEmail6").on("change input", function () {
-  //   $(this).toggleClass("is-invalid", !$(this).val());
-  // });
 }
 
 formValidation();

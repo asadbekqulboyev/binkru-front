@@ -4266,7 +4266,6 @@ footer.footer.straxovanie3 .footer__inner {
   font-size: 15px;
   line-height: 30px;
 }
-
 .travel-abroad__form-translate.straxovanie2 .form-group__bottom.mobileshow {
   display: none;
 }
@@ -4281,6 +4280,16 @@ footer.footer.straxovanie3 .footer__inner {
     .block-text.mobileshow.first {
     display: flex;
     padding-left: 0;
+  }
+  .travel-abroad__form-translate.straxovanie2
+    .form-group__bottom.first.mobileshow {
+    display: none !important;
+  }
+}
+@media (max-width:480px) {
+  .travel-abroad__form-translate.straxovanie2
+    .form-group__bottom.first.mobileshow {
+    display: flex !important;
   }
 }
 
@@ -4311,12 +4320,19 @@ footer.footer.straxovanie3 .footer__inner {
   width: 9px;
   height: 5px;
   right: 15px;
-  top: 45%;
+  top: 70px;
   transform: translateY(-45%);
 }
+@media (max-width: 1148px) {
+}
 @media (max-width: 768px) {
-  .wrapper.straxovanie3 .form-groupitem.select::after {
-    top: 70px;
+  /* .mobileshow{
+    display:flex !important;
+  }
+  .mobilehide {
+    display:none !important;  } */
+  .form-groupitem .mobileshow.first {
+    display: none !important;
   }
 }
 .wrapper.straxovanie3 .form-group.selectleft::after {
