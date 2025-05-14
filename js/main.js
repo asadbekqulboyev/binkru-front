@@ -837,7 +837,7 @@ $(document).ready(function (e) {
     if ($(this).is(":checked")) {
       // Faqat 30 kunlikni belgilaydi
       $policyBlock
-        .find('input[type="checkbox"][name="policy_days"][value="30"]')
+        .find('input[type="checkbox"][name="policy_days"][value="365"]')
         .prop("checked", true)
         .trigger("change");
     } else {
@@ -869,7 +869,7 @@ $(document).ready(function (e) {
           $("#to_date")
             .val($.datepicker.formatDate("dd.mm.yy", toDate))
             .prop("disabled", true)
-            .css("cursor", "not-allowed");
+            .css({ cursor: "not-allowed", background: "rgb(233 233 233)" });
 
           $(".den").text(days);
         }

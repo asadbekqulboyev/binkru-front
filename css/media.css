@@ -836,6 +836,11 @@
   .travel-abroad__form-translate.straxovanie2 .form-groupitem {
     flex: 0 0 48%;
   }
+  @media (max-width: 768px) {
+    .travel-abroad__form-translate.straxovanie2 .form-groupitem {
+      flex: 0 0 100%;
+    }
+  }
 
   .form-groupitem:nth-child(1) {
     order: 1;
@@ -1516,7 +1521,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .overlay input[type="text"] {
     padding: 10px;
     width: 65%;

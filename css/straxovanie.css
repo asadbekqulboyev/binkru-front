@@ -9,7 +9,7 @@
   border-radius: 5px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  max-height: 324px;
+  max-height: 134px;
   overflow-y: auto;
   margin-top: 5px;
   border-radius: 8px;
@@ -331,6 +331,14 @@ input[name="tourists_count_text"].active {
 @media (max-width: 768px) {
   .count_den_lists {
     order: 5;
+  }
+}
+.count_den_lists {
+  display: none;
+}
+@media (max-width: 480px) {
+  .count_den_lists.mobile_none {
+    display: none !important;
   }
 }
 .slide_content-filter {
