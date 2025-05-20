@@ -1058,11 +1058,13 @@ $(document).ready(function (e) {
     'input[type="checkbox"][name="policy_days"]',
     function () {
       const isChecked = $(this).is(":checked");
+
       $('input[type="checkbox"][name="policy_days"]')
         .not(this)
         .prop("checked", false);
 
       if (isChecked) {
+        $(".block-text_title").text("Период страхования:");
         const days = parseInt($(this).val(), 10);
         const fromDateVal = $("#from_date").val().trim();
         if (fromDateVal) {
@@ -1081,6 +1083,7 @@ $(document).ready(function (e) {
           $(".den").text(totalDays);
         }
       } else {
+        $(".block-text_title").text("Застраховано:");
         $("#to_date").prop("disabled", false).css("cursor", "pointer").val("");
         $(".den").text("0");
       }
@@ -1492,16 +1495,35 @@ function initNominationInput() {
     $input.val(selected.join(", "));
   }
 
-  // Inputga yozilganda checkboxlarni sync qilish
+  // Inputga yozilganda checkboxlarni sync qilish + filterlash
   $input.on("input", function () {
-    let values = $input
-      .val()
+    let inputValue = $input.val().trim();
+    let values = inputValue
       .split(",")
       .map((v) => v.trim())
       .filter((v) => v !== "");
+
+    // Checkboxlarni tanlanganlarga qarab belgilash
     $dropdown.find("input[type='checkbox']").each(function () {
-      $(this).prop("checked", values.includes($(this).val()));
+      let checkboxValue = $(this).val();
+      $(this).prop("checked", values.includes(checkboxValue));
     });
+
+    // Faqat mos keladigan elementlarni ko‘rsatish
+    const firstTerm = inputValue.split(",").pop().trim();
+    if (firstTerm === "") {
+      $dropdown.find("label").show();
+    } else {
+      $dropdown.find("label").each(function () {
+        const checkbox = $(this).find("input[type='checkbox']");
+        const val = checkbox.val();
+        if (val.toLowerCase().startsWith(firstTerm.toLowerCase())) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    }
   });
 
   // Backspace bosilganda oxirgi elementni o‘chirish
@@ -1510,7 +1532,6 @@ function initNominationInput() {
       let cursorPos = this.selectionStart;
       let val = $input.val();
 
-      // Faqat oxirida turgan bo‘lsa va oxiri vergul bilan tugasa
       if (
         cursorPos === val.length &&
         (val.endsWith(", ") || val.endsWith(","))
@@ -1522,6 +1543,7 @@ function initNominationInput() {
           .filter((v) => v !== "");
         parts.pop();
         $input.val(parts.join(", ") + (parts.length > 0 ? ", " : ""));
+
         $dropdown.find("input[type='checkbox']").each(function () {
           $(this).prop("checked", parts.includes($(this).val()));
         });
