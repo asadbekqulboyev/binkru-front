@@ -953,14 +953,6 @@ input[type="range"]::-webkit-slider-thumb {
   flex: 0 0 48%;
 }
 
-/* .quick-selection .tab__body-item.fourth4 .input-blocks .list__item-label .form-text{
-    margin-bottom: 15px;
-} */
-
-/* .quick-selection .tab__body-item.fourth4 .input-blocks .list__item-label .form-text.op0{
-    opacity: 0;
-} */
-
 .quick-selection .tab__body-item.fourth4 .input-blocks .list__item-label input {
   padding: 10px 15px;
   border-bottom: 1px solid rgb(231, 231, 231);
@@ -2708,12 +2700,6 @@ input[type="range"]::-webkit-slider-thumb {
   padding-right: 20px;
 }
 
-/* travel-abroad__form-translate */
-
-.travel-abroad__form-translate.straxovanie2 {
-  /* transform: translateY(-210px); */
-}
-
 .travel-abroad__form-translate.straxovanie2 .travel-abroad__form-block {
   padding: 50px 55px;
   border-style: solid;
@@ -3061,12 +3047,6 @@ input[type="range"]::-webkit-slider-thumb {
 .travel-abroad.straxovanie2 .section-subtitle {
   padding-left: 20px;
   padding-right: 20px;
-}
-
-/* travel-abroad__form-translate */
-
-.travel-abroad__form-translate.straxovanie2 {
-  /* transform: translateY(-210px); */
 }
 
 .travel-abroad__form-translate.straxovanie2 .travel-abroad__form-block {

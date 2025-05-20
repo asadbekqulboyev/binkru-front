@@ -604,36 +604,21 @@
                     <div class="travel-abroad__form-title">
                         Оформить туристическую страховку
                     </div>
-                    <form
-                class="travel-abroad__form d-flex flex-wrap justify-content-between"
-              >
+                    <form  class="travel-abroad__form d-flex flex-wrap justify-content-between">
                 <div class="form-group form-groupitem select">
                   <span class="form-group__top block-text">Страна поездки</span>
                   <label class="form_input nomination">
                     <input
                       type="text"
-                      id="selected-values"
-                      readonly=""
                       placeholder=" Выберите страну "
                       autocomplete="off"
                       class="nomination_input form-control"
                     />
                     <div class="dropdown__menu" style="display: none">
-                      <label
-                        ><input type="checkbox" value="Шенген" />Шенген
-                      </label>
-                      <label
-                        ><input type="checkbox" value="Турция" />Турция</label
-                      >
-                      <label
-                        ><input
-                          type="checkbox"
-                          value="Болгария"
-                        />Болгария</label
-                      >
-                      <label
-                        ><input type="checkbox" value="Таиланд" />Таиланд</label
-                      >
+                      <label><input type="checkbox" value="Шенген" />Шенген</label>
+                      <label><input type="checkbox" value="Турция" />Турция</label>
+                      <label><input type="checkbox" value="Болгария"/>Болгария</label>
+                      <label><input type="checkbox" value="Таиланд" />Таиланд</label>
                       <label><input type="checkbox" value="США" />США</label>
                     </div>
                   </label>
@@ -676,7 +661,7 @@
                       <i class="fa fa-question-circle" aria-hidden="true"></i>
                     </button>
                   </div>
-                  <div class="count_den_lists">
+                  <div class="count_den_lists mobile_none">
                     <div class="count_den_content">
                       <label class="count_den_item">
                         <input type="checkbox" name="policy_days" value="30" />
@@ -827,8 +812,13 @@
                     </div>
                     <span class="form-check-label">Годовой полис</span>
                   </label>
-                  <button type="button" class="btn questionicon" data-toggle="tooltip" data-placement="bottom"
-                    title="Info">
+                  <button
+                    type="button"
+                    class="btn questionicon"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Info"
+                  >
                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                   </button>
                 </div>
@@ -901,7 +891,7 @@
                     Рассчитать страховку
                   </button>
                 </div>
-              </form>
+                    </form>
                 </div>
             </div>
         </section>

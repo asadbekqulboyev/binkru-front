@@ -17,6 +17,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/themes/base/jquery-ui.min.css"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css" />
     <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css" />
     <link rel="stylesheet" href="libs/datepicker/bootstrap-datepicker3.css" />
@@ -758,35 +762,22 @@
                 Оформить туристическую страховку
               </div>
               <form
-                class="travel-abroad__form d-flex flex-wrap justify-content-between "
+                class="travel-abroad__form d-flex flex-wrap justify-content-between"
               >
                 <div class="form-group form-groupitem select">
                   <span class="form-group__top block-text">Страна поездки</span>
                   <label class="form_input nomination">
                     <input
                       type="text"
-                      id="selected-values"
-                      readonly=""
                       placeholder=" Выберите страну "
                       autocomplete="off"
                       class="nomination_input form-control"
                     />
                     <div class="dropdown__menu" style="display: none">
-                      <label
-                        ><input type="checkbox" value="Шенген" />Шенген
-                      </label>
-                      <label
-                        ><input type="checkbox" value="Турция" />Турция</label
-                      >
-                      <label
-                        ><input
-                          type="checkbox"
-                          value="Болгария"
-                        />Болгария</label
-                      >
-                      <label
-                        ><input type="checkbox" value="Таиланд" />Таиланд</label
-                      >
+                      <label><input type="checkbox" value="Шенген" />Шенген</label>
+                      <label><input type="checkbox" value="Турция" />Турция</label>
+                      <label><input type="checkbox" value="Болгария"/>Болгария</label>
+                      <label><input type="checkbox" value="Таиланд" />Таиланд</label>
                       <label><input type="checkbox" value="США" />США</label>
                     </div>
                   </label>
@@ -830,7 +821,7 @@
                     </button>
                   </div>
                   <div class="count_den_lists mobile_none">
-                    <div class="count_den_content ">
+                    <div class="count_den_content">
                       <label class="count_den_item">
                         <input type="checkbox" name="policy_days" value="30" />
                         <span>30 дней</span>
@@ -4594,6 +4585,7 @@
     <script src="libs/datepicker/bootstrap-datepicker.ru.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/i18n/jquery-ui-i18n.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="libs/jquery.inputmask.js"></script>
     <script src="js/main.js"></script>
   </body>
