@@ -4193,11 +4193,6 @@ footer.footer.straxovanie3 .footer__inner {
   top: 71px;
   transform: translateY(-45%);
 }
-@media (max-width: 1149px) {
-  .wrapper.straxovanie2 .form-groupitem.select::after {
-    top: 38%;
-  }
-}
 
 .travel-abroad__form-translate.straxovanie2 .form-group__bottom,
 .travel-abroad__form-translate.straxovanie2 .form-group__bottom.mobileshow {

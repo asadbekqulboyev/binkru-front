@@ -596,283 +596,6 @@ $(document).ready(function (e) {
       allowClear: true,
     });
   }
-  // function DatePiscers() {
-  //   if ($("#from_date, #to_date").length) {
-  //     $.datepicker.setDefaults({
-  //       closeText: "Закрыть",
-  //       prevText: "&#x3C;Пред",
-  //       nextText: "След&#x3E;",
-  //       currentText: "Сегодня",
-  //       monthNames: [
-  //         "Январь",
-  //         "Февраль",
-  //         "Март",
-  //         "Апрель",
-  //         "Май",
-  //         "Июнь",
-  //         "Июль",
-  //         "Август",
-  //         "Сентябрь",
-  //         "Октябрь",
-  //         "Ноябрь",
-  //         "Декабрь",
-  //       ],
-  //       monthNamesShort: [
-  //         "Янв",
-  //         "Фев",
-  //         "Мар",
-  //         "Апр",
-  //         "Май",
-  //         "Июн",
-  //         "Июл",
-  //         "Авг",
-  //         "Сен",
-  //         "Окт",
-  //         "Ноя",
-  //         "Дек",
-  //       ],
-  //       dayNames: [
-  //         "воскресенье",
-  //         "понедельник",
-  //         "вторник",
-  //         "среда",
-  //         "четверг",
-  //         "пятница",
-  //         "суббота",
-  //       ],
-  //       dayNamesShort: ["вск", "пнд", "втр", "срд", "чтв", "птн", "сбт"],
-  //       dayNamesMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
-  //       weekHeader: "Нед",
-  //       dateFormat: "dd.mm.yy",
-  //       firstDay: 1,
-  //     });
-
-  //     $("#from_date").datepicker({
-  //       changeMonth: true,
-  //       changeYear: true,
-  //       yearRange: "c-100:c+10",
-  //       minDate: +1,
-  //       beforeShowDay: function (date) {
-  //         const today = new Date();
-  //         const tomorrow = new Date(
-  //           today.getFullYear(),
-  //           today.getMonth(),
-  //           today.getDate() + 1
-  //         );
-  //         if (date < tomorrow) {
-  //           return [false, "disabled-date", "Недоступно"];
-  //         }
-  //         return [true, "", ""];
-  //       },
-  //       onSelect: function (dateText) {
-  //         $(this).val(
-  //           $.datepicker.formatDate("dd.mm.yy", $(this).datepicker("getDate"))
-  //         );
-  //         $("#to_date").datepicker("option", "minDate", dateText);
-
-  //         const isYearlyChecked = $(
-  //           'input[name="policy_days"][value="365"]'
-  //         ).is(":checked");
-  //         if (isYearlyChecked) {
-  //           let fromDate = $(this).datepicker("getDate");
-  //           let toDate = new Date(fromDate);
-  //           toDate.setDate(toDate.getDate() + 365);
-  //           $("#to_date")
-  //             .val($.datepicker.formatDate("dd.mm.yy", toDate))
-  //             .prop("disabled", true)
-  //             .css("cursor", "not-allowed");
-  //           $(".den").text("365");
-  //         } else {
-  //           calculateDays();
-  //           setTimeout(() => {
-  //             $("#to_date").datepicker("show");
-  //           }, 100);
-  //         }
-  //       },
-  //       beforeShow: function () {
-  //         setTimeout(() => {
-  //           $(".ui-datepicker").css("z-index", 9999);
-  //         }, 0);
-  //       },
-  //     });
-
-  //     $("#to_date").datepicker({
-  //       changeMonth: true,
-  //       changeYear: true,
-  //       yearRange: "c-100:c+10",
-  //       onSelect: function () {
-  //         $(this).val(
-  //           $.datepicker.formatDate("dd.mm.yy", $(this).datepicker("getDate"))
-  //         );
-  //         calculateDays();
-  //       },
-  //       beforeShow: function () {
-  //         setTimeout(() => {
-  //           $(".ui-datepicker").css("z-index", 9999);
-  //         }, 0);
-  //       },
-  //     });
-
-  //     function calculateDays() {
-  //       let fromVal = $("#from_date").val().trim();
-  //       let toVal = $("#to_date").val().trim();
-
-  //       if (fromVal && toVal) {
-  //         try {
-  //           let fromDate = $.datepicker.parseDate("dd.mm.yy", fromVal);
-  //           let toDate = $.datepicker.parseDate("dd.mm.yy", toVal);
-  //           let diff =
-  //             Math.floor((toDate - fromDate) / (1000 * 60 * 60 * 24)) + 1;
-
-  //           if (diff < 0) {
-  //             $(".den").text("0");
-  //             $("#to_date").val("");
-  //           } else {
-  //             $(".den").text(diff);
-  //           }
-  //         } catch (e) {
-  //           $(".den").text("0");
-  //         }
-  //       } else {
-  //         $(".den").text("0");
-  //       }
-  //     }
-
-  //     // Stil: o‘tgan sanalarga cursor: not-allowed
-  //     $("<style>")
-  //       .prop("type", "text/css")
-  //       .html(
-  //         `
-  //         .ui-datepicker td.disabled-date span {
-  //           background: #f5f5f5 !important;
-  //           color: #aaa !important;
-  //           cursor: not-allowed !important;
-  //         }
-  //       `
-  //       )
-  //       .appendTo("head");
-  //   }
-  // }
-
-  // DatePiscers();
-  // // $("#year_policy").change(function () {
-  // //   if ($(this).is(":checked")) {
-  // //     $('input[type="checkbox"][name="policy_days"][value="30"]')
-  // //       .prop("checked", true)
-  // //       .trigger("change");
-  // //   } else {
-  // //     $('input[type="checkbox"][name="policy_days"]')
-  // //       .prop("checked", false)
-  // //       .trigger("change");
-  // //   }
-  // // });
-  // // $("#exampleCheck_first,#exampleCheck_mobile").change(function () {
-  // //   if ($(this).is(":checked")) {
-  // //     $('input[type="checkbox"][name="policy_days"][value="30"]')
-  // //       .prop("checked", true)
-  // //       .trigger("change");
-  // //   } else {
-  // //     $('input[type="checkbox"][name="policy_days"]')
-  // //       .prop("checked", false)
-  // //       .trigger("change");
-  // //   }
-  // // });
-  // // $(document).on(
-  // //   "change",
-  // //   'input[type="checkbox"][name="policy_days"]',
-  // //   function () {
-  // //     const isChecked = $(this).is(":checked");
-  // //     $('input[type="checkbox"][name="policy_days"]')
-  // //       .not(this)
-  // //       .prop("checked", false);
-
-  // //     if (isChecked) {
-  // //       const days = parseInt($(this).val(), 10);
-  // //       const fromDateVal = $("#from_date").val().trim();
-  // //       if (fromDateVal) {
-  // //         const fromDate = $.datepicker.parseDate("dd.mm.yy", fromDateVal);
-  // //         const toDate = new Date(fromDate);
-  // //         toDate.setDate(toDate.getDate() + days);
-
-  // //         $("#to_date")
-  // //           .val($.datepicker.formatDate("dd.mm.yy", toDate))
-  // //           .prop("disabled", true)
-  // //           .css("cursor", "not-allowed");
-
-  // //         $(".den").text(days);
-  // //       }
-  // //     } else {
-  // //       $("#to_date").prop("disabled", false).css("cursor", "pointer").val("");
-  // //       $(".den").text("0");
-  // //     }
-  // //   }
-  // // );
-  // $(".first_btn").click(function (e) {
-  //   if ($(window).width() <= 768) {
-  //     e.preventDefault();
-
-  //     var $promocodeItem = $(
-  //       ".calculating-tourist__promocodes-item:not(.first_btn)"
-  //     );
-  //     var $btnText = $(this).find(".addoptions");
-
-  //     $promocodeItem.slideToggle(300, function () {
-  //       if ($promocodeItem.is(":visible")) {
-  //         $promocodeItem.css("background-color", "#fff");
-  //         $btnText.text("Скрыть опции"); // Yopish matni
-  //       } else {
-  //         $btnText.text("Дополнительные опции"); // Boshlang‘ich matn
-  //       }
-  //     });
-  //     $(".calculating-tourist__promocodes-item.all_filters").hide();
-  //   }
-  // });
-
-  // $("#exampleCheck_first, #exampleCheck_mobile").change(function () {
-  //   const $block = $(this).closest(".block-text").next(".count_den_lists");
-  //   const $policyInput = $block.find('input[name="policy_days"][value="30"]'); // 365 emas, 30
-
-  //   if ($(this).is(":checked")) {
-  //     $policyInput.prop("checked", true).trigger("change");
-  //   } else {
-  //     $block
-  //       .find('input[name="policy_days"]')
-  //       .prop("checked", false)
-  //       .trigger("change");
-  //   }
-  // });
-
-  // $(document).on(
-  //   "change",
-  //   'input[type="checkbox"][name="policy_days"]',
-  //   function () {
-  //     const isChecked = $(this).is(":checked");
-  //     $('input[type="checkbox"][name="policy_days"]')
-  //       .not(this)
-  //       .prop("checked", false);
-
-  //     if (isChecked) {
-  //       const days = parseInt($(this).val(), 10);
-  //       const fromDateVal = $("#from_date").val().trim();
-  //       if (fromDateVal) {
-  //         const fromDate = $.datepicker.parseDate("dd.mm.yy", fromDateVal);
-  //         const toDate = new Date(fromDate);
-  //         toDate.setDate(toDate.getDate() + days);
-
-  //         $("#to_date")
-  //           .val($.datepicker.formatDate("dd.mm.yy", toDate))
-  //           .prop("disabled", true)
-  //           .css({ cursor: "not-allowed", background: "rgb(233 233 233)" });
-
-  //         $(".den").text(days);
-  //       }
-  //     } else {
-  //       $("#to_date").prop("disabled", false).css("cursor", "pointer").val("");
-  //       $(".den").text("0");
-  //     }
-  //   }
-  // );
-
   function DatePiscers() {
     if ($("#from_date, #to_date").length) {
       $.datepicker.setDefaults({
@@ -1065,14 +788,11 @@ $(document).ready(function (e) {
 
       if (isChecked) {
         $(".block-text_title").text("Период страхования:");
-        const days = parseInt($(this).val(), 10);
         const fromDateVal = $("#from_date").val().trim();
         if (fromDateVal) {
           const fromDate = $.datepicker.parseDate("dd.mm.yy", fromDateVal);
           const toDate = new Date(fromDate);
-
-          // 1 yil (365 kun) + tanlangan policy_days (masalan 30 yoki 60)
-          const totalDays = 365 + days;
+          const totalDays = 365;
           toDate.setDate(toDate.getDate() + totalDays);
 
           $("#to_date")
@@ -1466,36 +1186,116 @@ $(".form-group__bottom.mobileshow input").change(function () {
       .slideUp();
   }
 });
+// function initNominationInput() {
+//   const $input = $(".nomination_input");
+//   const $dropdown = $(".dropdown__menu");
+//   $input.on("focus", function () {
+//     $dropdown.stop(true, true).slideDown(200);
+//   });
+//   $(document).on("click", function (e) {
+//     if (!$(e.target).closest(".form_input").length) {
+//       $dropdown.stop(true, true).slideUp(200);
+//     }
+//   });
+//   $dropdown.find("input[type='checkbox']").on("change", function () {
+//     updateInputFromCheckboxes();
+//   });
+//   function updateInputFromCheckboxes() {
+//     let selected = [];
+//     $dropdown.find("input[type='checkbox']:checked").each(function () {
+//       selected.push($(this).val());
+//     });
+//     $input.val(selected.join(", "));
+//   }
+
+//   // Inputga yozilganda checkboxlarni sync qilish + filterlash
+//   $input.on("input", function () {
+//     let inputValue = $input.val().trim();
+//     let values = inputValue
+//       .split(",")
+//       .map((v) => v.trim())
+//       .filter((v) => v !== "");
+
+//     // Checkboxlarni tanlanganlarga qarab belgilash
+//     $dropdown.find("input[type='checkbox']").each(function () {
+//       let checkboxValue = $(this).val();
+//       $(this).prop("checked", values.includes(checkboxValue));
+//     });
+
+//     // Faqat mos keladigan elementlarni ko‘rsatish
+//     const firstTerm = inputValue.split(",").pop().trim();
+//     if (firstTerm === "") {
+//       $dropdown.find("label").show();
+//     } else {
+//       $dropdown.find("label").each(function () {
+//         const checkbox = $(this).find("input[type='checkbox']");
+//         const val = checkbox.val();
+//         if (val.toLowerCase().startsWith(firstTerm.toLowerCase())) {
+//           $(this).show();
+//         } else {
+//           $(this).hide();
+//         }
+//       });
+//     }
+//   });
+
+//   // Backspace bosilganda oxirgi elementni o‘chirish
+//   $input.on("keydown", function (e) {
+//     if (e.key === "Backspace") {
+//       let cursorPos = this.selectionStart;
+//       let val = $input.val();
+
+//       if (
+//         cursorPos === val.length &&
+//         (val.endsWith(", ") || val.endsWith(","))
+//       ) {
+//         e.preventDefault();
+//         let parts = val
+//           .split(",")
+//           .map((v) => v.trim())
+//           .filter((v) => v !== "");
+//         parts.pop();
+//         $input.val(parts.join(", ") + (parts.length > 0 ? ", " : ""));
+
+//         $dropdown.find("input[type='checkbox']").each(function () {
+//           $(this).prop("checked", parts.includes($(this).val()));
+//         });
+//       }
+//     }
+//   });
+// }
+// initNominationInput();
 function initNominationInput() {
   const $input = $(".nomination_input");
   const $dropdown = $(".dropdown__menu");
 
-  // Dropdownni ochish
+  // Inputga focus bo‘lganda dropdownni ochamiz
   $input.on("focus", function () {
     $dropdown.stop(true, true).slideDown(200);
   });
 
-  // Dropdownni tashqariga bosilganda yopish
+  // Tashqariga bosilganda dropdownni yopamiz
   $(document).on("click", function (e) {
     if (!$(e.target).closest(".form_input").length) {
       $dropdown.stop(true, true).slideUp(200);
     }
   });
 
-  // Checkbox bosilganda inputga qo‘shish
+  // Checkboxlar o‘zgartirilganda inputni yangilaymiz
   $dropdown.find("input[type='checkbox']").on("change", function () {
     updateInputFromCheckboxes();
   });
 
+  // ✅ Inputni checkboxlardan to‘ldirish
   function updateInputFromCheckboxes() {
     let selected = [];
     $dropdown.find("input[type='checkbox']:checked").each(function () {
       selected.push($(this).val());
     });
-    $input.val(selected.join(", "));
+    $input.val(selected.join(", ") + (selected.length > 0 ? ", " : ""));
   }
 
-  // Inputga yozilganda checkboxlarni sync qilish + filterlash
+  // ✅ Inputga yozilganda checkboxlarni belgilang va ro‘yxatni filterlang
   $input.on("input", function () {
     let inputValue = $input.val().trim();
     let values = inputValue
@@ -1503,13 +1303,13 @@ function initNominationInput() {
       .map((v) => v.trim())
       .filter((v) => v !== "");
 
-    // Checkboxlarni tanlanganlarga qarab belgilash
+    // Checkboxlarni sync qilish
     $dropdown.find("input[type='checkbox']").each(function () {
       let checkboxValue = $(this).val();
       $(this).prop("checked", values.includes(checkboxValue));
     });
 
-    // Faqat mos keladigan elementlarni ko‘rsatish
+    // Filterlash
     const firstTerm = inputValue.split(",").pop().trim();
     if (firstTerm === "") {
       $dropdown.find("label").show();
@@ -1526,28 +1326,61 @@ function initNominationInput() {
     }
   });
 
-  // Backspace bosilganda oxirgi elementni o‘chirish
+  // ✅ Klaviaturani kuzatamiz: Backspace, Enter, ,
   $input.on("keydown", function (e) {
-    if (e.key === "Backspace") {
-      let cursorPos = this.selectionStart;
-      let val = $input.val();
+    let cursorPos = this.selectionStart;
+    let val = $input.val();
 
-      if (
-        cursorPos === val.length &&
-        (val.endsWith(", ") || val.endsWith(","))
-      ) {
-        e.preventDefault();
-        let parts = val
-          .split(",")
-          .map((v) => v.trim())
-          .filter((v) => v !== "");
-        parts.pop();
-        $input.val(parts.join(", ") + (parts.length > 0 ? ", " : ""));
+    // 🔙 Backspace: oxirgi elementni o‘chirish
+    if (
+      e.key === "Backspace" &&
+      cursorPos === val.length &&
+      (val.endsWith(", ") || val.endsWith(","))
+    ) {
+      e.preventDefault();
+      let parts = val
+        .split(",")
+        .map((v) => v.trim())
+        .filter((v) => v !== "");
+      parts.pop();
+      $input.val(parts.join(", ") + (parts.length > 0 ? ", " : ""));
 
-        $dropdown.find("input[type='checkbox']").each(function () {
-          $(this).prop("checked", parts.includes($(this).val()));
+      $dropdown.find("input[type='checkbox']").each(function () {
+        $(this).prop("checked", parts.includes($(this).val()));
+      });
+
+      $input.trigger("input");
+    }
+
+    // 🔽 Enter yoki vergul: tanlash
+    if (e.key === "Enter" || e.key === ",") {
+      e.preventDefault();
+      let inputVal = $input.val().trim();
+      let parts = inputVal
+        .split(",")
+        .map((v) => v.trim())
+        .filter((v) => v !== "");
+
+      const lastTerm = parts[parts.length - 1];
+
+      const match = $dropdown
+        .find("input[type='checkbox']")
+        .filter(function () {
+          return $(this).val().toLowerCase() === lastTerm.toLowerCase();
         });
+
+      if (match.length > 0) {
+        match.prop("checked", true);
       }
+
+      const unique = [...new Set(parts)];
+      $input.val(unique.join(", ") + ", ");
+
+      updateInputFromCheckboxes();
+
+      // ⬇️ Keyingi yozuv uchun dropdownni ochish va filterlash
+      $input.trigger("input");
+      $dropdown.stop(true, true).slideDown(200);
     }
   });
 }
