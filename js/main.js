@@ -746,6 +746,7 @@ $(document).ready(function (e) {
         .appendTo("head");
     }
   }
+  DatePiscers();
   $(".first_btn").click(function (e) {
     if ($(window).width() <= 768) {
       e.preventDefault();
@@ -793,7 +794,7 @@ $(document).ready(function (e) {
           const fromDate = $.datepicker.parseDate("dd.mm.yy", fromDateVal);
           const toDate = new Date(fromDate);
           const totalDays = 365;
-          toDate.setDate(toDate.getDate() + totalDays);
+          toDate.setDate(toDate.getDate() + totalDays - 1);
 
           $("#to_date")
             .val($.datepicker.formatDate("dd.mm.yy", toDate))
@@ -809,8 +810,6 @@ $(document).ready(function (e) {
       }
     }
   );
-
-  DatePiscers();
 
   // add tourists
   $("[name=tourists_count_text]").on("focus", function (e) {
