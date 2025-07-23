@@ -9491,3 +9491,46 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     align-items: flex-start;
   }
 }
+.sublink{
+  gap: 3px;
+  opacity: .4;
+
+}
+.sublink.active{
+  opacity: 1;
+}
+.sublink span{
+  cursor: pointer;
+  color: #199bc54d;
+}
+.sublink span.active{
+    opacity: 1;
+    color: #199bc5;
+}
+.nomination2 .dropdown__menu{
+  top: 52px !important;
+  z-index: 122 !important;
+}
+.nomination2 .custom_select_wrapper {
+  position:relative;
+}
+.nomination2 .custom_select_wrapper.open .custom_select_selected{
+ margin: 0;
+ font-size: 12px;
+}
+.nomination2 .custom_select_selected{
+  padding: 0; 
+  border:0;
+  height: auto;
+  position: absolute;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #495057;
+}
+.nomination2 .custom_select_selected.active {
+  font-size: 12px;
+  top: -6px;
+  color: #888;
+} 
+

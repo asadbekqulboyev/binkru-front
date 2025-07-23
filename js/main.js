@@ -1264,73 +1264,257 @@ $(".form-group__bottom.mobileshow input").change(function () {
 //   });
 // }
 // initNominationInput();
-function initNominationInput() {
-  const $input = $(".nomination_input");
-  const $dropdown = $(".dropdown__menu");
+// function initNominationInput() {
+//   const $input = $(".nomination_input");
+//   const $dropdown = $(".dropdown__menu");
+//   console.log($dropdown);
+  
+//   const $sublinks = $(".sublink span");
 
-  // Inputga focus bo‘lganda dropdownni ochamiz
+//   // 🔻 Inputga focus bo‘lganda dropdownni ochish
+//   $input.on("focus", function () {
+//     $dropdown.stop(true, true).slideDown(200);
+//   });
+
+//   // 🔻 Tashqariga bosilganda dropdownni yopish
+//   $(document).on("click", function (e) {
+//     if (!$(e.target).closest(".form_input").length) {
+//       $dropdown.stop(true, true).slideUp(200);
+//     }
+//   });
+
+//   // 🔄 Checkboxlar o‘zgartirilganda inputni yangilash
+//   $dropdown.find("input[type='checkbox']").on("change", function () {
+//     updateInputFromCheckboxes();
+//   });
+
+//   // ✅ INPUT'ni checkboxlardan yaratish
+//   function updateInputFromCheckboxes() {
+//     let selected = [];
+//     $dropdown.find("input[type='checkbox']:checked").each(function () {
+//       selected.push($(this).val());
+//     });
+//     $input.val(selected.join(", ") + (selected.length > 0 ? ", " : ""));
+
+//     // 🔄 Spanlarga active klass qo‘shish yoki olib tashlash
+//     $sublinks.each(function () {
+//       const spanText = $(this).text().trim();
+//       $(this).toggleClass("active", selected.includes(spanText));
+//     });
+//   }
+
+//   // ✅ INPUTga yozilganda checkboxlar bilan sinxronlashtirish va filterlash
+//   $input.on("input", function () {
+//     let inputValue = $input.val().trim();
+//     let values = inputValue
+//       .split(",")
+//       .map((v) => v.trim())
+//       .filter((v) => v !== "");
+
+//     // Checkboxlarni belgilash
+//     $dropdown.find("input[type='checkbox']").each(function () {
+//       let checkboxValue = $(this).val();
+//       $(this).prop("checked", values.includes(checkboxValue));
+//     });
+
+//     // Spanlarni belgilash
+//     $sublinks.each(function () {
+//       const spanText = $(this).text().trim();
+//       $(this).toggleClass("active", values.includes(spanText));
+//     });
+
+//     // Filterlash
+//     const lastTerm = inputValue.split(",").pop().trim();
+//     if (lastTerm === "") {
+//       $dropdown.find("label").show();
+//     } else {
+//       $dropdown.find("label").each(function () {
+//         const checkbox = $(this).find("input[type='checkbox']");
+//         const val = checkbox.val();
+//         if (val.toLowerCase().startsWith(lastTerm.toLowerCase())) {
+//           $(this).show();
+//         } else {
+//           $(this).hide();
+//         }
+//       });
+//     }
+//   });
+
+//   // ⌨️ INPUTda Backspace, Enter, , kabi tugmalarni boshqarish
+//   $input.on("keydown", function (e) {
+//     let cursorPos = this.selectionStart;
+//     let val = $input.val();
+
+//     // 🔙 Backspace: oxirgi elementni o‘chirish
+//     if (
+//       e.key === "Backspace" &&
+//       cursorPos === val.length &&
+//       (val.endsWith(", ") || val.endsWith(","))
+//     ) {
+//       e.preventDefault();
+//       let parts = val
+//         .split(",")
+//         .map((v) => v.trim())
+//         .filter((v) => v !== "");
+//       parts.pop();
+//       $input.val(parts.join(", ") + (parts.length > 0 ? ", " : ""));
+
+//       // Checkbox va spanlarni yangilash
+//       $dropdown.find("input[type='checkbox']").each(function () {
+//         $(this).prop("checked", parts.includes($(this).val()));
+//       });
+//       $sublinks.each(function () {
+//         const spanText = $(this).text().trim();
+//         $(this).toggleClass("active", parts.includes(spanText));
+//       });
+
+//       $input.trigger("input");
+//     }
+
+//     // 🔽 Enter yoki , bosilganda tanlashni rasmiylashtirish
+//     if (e.key === "Enter" || e.key === ",") {
+//       e.preventDefault();
+//       let inputVal = $input.val().trim();
+//       let parts = inputVal
+//         .split(",")
+//         .map((v) => v.trim())
+//         .filter((v) => v !== "");
+
+//       const lastTerm = parts[parts.length - 1];
+
+//       // Mos checkboxni belgilash
+//       const match = $dropdown
+//         .find("input[type='checkbox']")
+//         .filter(function () {
+//           return $(this).val().toLowerCase() === lastTerm.toLowerCase();
+//         });
+
+//       if (match.length > 0) {
+//         match.prop("checked", true);
+//       }
+
+//       const unique = [...new Set(parts)];
+//       $input.val(unique.join(", ") + ", ");
+
+//       updateInputFromCheckboxes();
+
+//       $input.trigger("input");
+//       $dropdown.stop(true, true).slideDown(200);
+//     }
+//   });
+
+//   // ✅ SUBLINK bosilganda input, checkbox va classlarni boshqarish
+//   $sublinks.on("click", function () {
+//     const clickedText = $(this).text().trim();
+
+//     let current = $input.val()
+//       .split(",")
+//       .map((v) => v.trim())
+//       .filter((v) => v !== "");
+
+//     if (current.includes(clickedText)) {
+//       current = current.filter((v) => v !== clickedText);
+//       $(this).removeClass("active");
+//     } else {
+//       current.push(clickedText);
+//       $(this).addClass("active");
+//     }
+
+//     // Input qiymatini yangilash
+//     $input.val(current.join(", ") + (current.length > 0 ? ", " : ""));
+
+//     // Checkboxlarni sinxronlashtirish
+//     $dropdown.find("input[type='checkbox']").each(function () {
+//       $(this).prop("checked", current.includes($(this).val()));
+//     });
+
+//     $input.trigger("input");
+//   });
+
+// }
+function initNominationInput($block) {
+  const $input = $block.find(".nomination_input");
+  const $dropdown = $block.find(".dropdown__menu");
+  const $sublinks = $block.find(".sublink span");
+  const $title = $block.find(".custom_select_selected");
+
+  function updateTitleState() {
+    const val = $input.val().trim();
+    if (document.activeElement === $input[0] || val !== "") {
+      $title.addClass("active");
+    } else {
+      $title.removeClass("active");
+    }
+  }
+
+  $input.on("focus input blur", function () {
+    updateTitleState();
+  });
+
+  updateTitleState(); // initial state
+
+  // ✅ DROPDOWN va boshqa funksiyalarni avvalgidek ishlashiga ruxsat
   $input.on("focus", function () {
     $dropdown.stop(true, true).slideDown(200);
   });
 
-  // Tashqariga bosilganda dropdownni yopamiz
   $(document).on("click", function (e) {
-    if (!$(e.target).closest(".form_input").length) {
+    if (!$(e.target).closest($block).length) {
       $dropdown.stop(true, true).slideUp(200);
     }
   });
 
-  // Checkboxlar o‘zgartirilganda inputni yangilaymiz
-  $dropdown.find("input[type='checkbox']").on("change", function () {
-    updateInputFromCheckboxes();
-  });
-
-  // ✅ Inputni checkboxlardan to‘ldirish
   function updateInputFromCheckboxes() {
     let selected = [];
     $dropdown.find("input[type='checkbox']:checked").each(function () {
       selected.push($(this).val());
     });
     $input.val(selected.join(", ") + (selected.length > 0 ? ", " : ""));
+    updateTitleState(); // input yangilanganidan so‘ng tekshiramiz
+    $sublinks.each(function () {
+      const spanText = $(this).text().trim();
+      $(this).toggleClass("active", selected.includes(spanText));
+    });
   }
 
-  // ✅ Inputga yozilganda checkboxlarni belgilang va ro‘yxatni filterlang
+  $dropdown.find("input[type='checkbox']").on("change", function () {
+    updateInputFromCheckboxes();
+  });
+
   $input.on("input", function () {
     let inputValue = $input.val().trim();
+    updateTitleState();
+
     let values = inputValue
       .split(",")
       .map((v) => v.trim())
       .filter((v) => v !== "");
 
-    // Checkboxlarni sync qilish
     $dropdown.find("input[type='checkbox']").each(function () {
-      let checkboxValue = $(this).val();
-      $(this).prop("checked", values.includes(checkboxValue));
+      $(this).prop("checked", values.includes($(this).val()));
     });
 
-    // Filterlash
-    const firstTerm = inputValue.split(",").pop().trim();
-    if (firstTerm === "") {
+    $sublinks.each(function () {
+      const spanText = $(this).text().trim();
+      $(this).toggleClass("active", values.includes(spanText));
+    });
+
+    const lastTerm = inputValue.split(",").pop().trim();
+    if (lastTerm === "") {
       $dropdown.find("label").show();
     } else {
       $dropdown.find("label").each(function () {
         const checkbox = $(this).find("input[type='checkbox']");
         const val = checkbox.val();
-        if (val.toLowerCase().startsWith(firstTerm.toLowerCase())) {
-          $(this).show();
-        } else {
-          $(this).hide();
-        }
+        $(this).toggle(val.toLowerCase().startsWith(lastTerm.toLowerCase()));
       });
     }
   });
 
-  // ✅ Klaviaturani kuzatamiz: Backspace, Enter, ,
   $input.on("keydown", function (e) {
     let cursorPos = this.selectionStart;
     let val = $input.val();
 
-    // 🔙 Backspace: oxirgi elementni o‘chirish
     if (
       e.key === "Backspace" &&
       cursorPos === val.length &&
@@ -1343,15 +1527,10 @@ function initNominationInput() {
         .filter((v) => v !== "");
       parts.pop();
       $input.val(parts.join(", ") + (parts.length > 0 ? ", " : ""));
-
-      $dropdown.find("input[type='checkbox']").each(function () {
-        $(this).prop("checked", parts.includes($(this).val()));
-      });
-
+      updateInputFromCheckboxes();
       $input.trigger("input");
     }
 
-    // 🔽 Enter yoki vergul: tanlash
     if (e.key === "Enter" || e.key === ",") {
       e.preventDefault();
       let inputVal = $input.val().trim();
@@ -1359,7 +1538,6 @@ function initNominationInput() {
         .split(",")
         .map((v) => v.trim())
         .filter((v) => v !== "");
-
       const lastTerm = parts[parts.length - 1];
 
       const match = $dropdown
@@ -1376,11 +1554,51 @@ function initNominationInput() {
       $input.val(unique.join(", ") + ", ");
 
       updateInputFromCheckboxes();
-
-      // ⬇️ Keyingi yozuv uchun dropdownni ochish va filterlash
       $input.trigger("input");
       $dropdown.stop(true, true).slideDown(200);
     }
   });
+
+  $sublinks.on("click", function () {
+    const clickedText = $(this).text().trim();
+    let current = $input.val()
+      .split(",")
+      .map((v) => v.trim())
+      .filter((v) => v !== "");
+
+    if (current.includes(clickedText)) {
+      current = current.filter((v) => v !== clickedText);
+      $(this).removeClass("active");
+    } else {
+      current.push(clickedText);
+      $(this).addClass("active");
+    }
+
+    $input.val(current.join(", ") + (current.length > 0 ? ", " : ""));
+    $dropdown.find("input[type='checkbox']").each(function () {
+      $(this).prop("checked", current.includes($(this).val()));
+    });
+
+    updateTitleState();
+    $input.trigger("input");
+  });
 }
-initNominationInput();
+
+// // ✅ Funksiyani ishga tushirish
+
+$(".nomination1").each(function () {
+      $('.sublink').click(function () {
+      $('.sublink').removeClass('active');
+      $(this).addClass('active');
+    });
+  initNominationInput($(this));
+  
+});
+$(".nomination2").each(function () {
+  $('.sublink').click(function () {
+  $('.sublink').removeClass('active');
+  $(this).addClass('active');
+});
+initNominationInput($(this));
+
+});
