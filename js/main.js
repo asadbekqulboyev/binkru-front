@@ -1033,7 +1033,7 @@ $(document).ready(function () {
   $(".custom_select_wrapper").each(function () {
     const $select = $(this);
     const $selected = $select.find(".custom_select_selected");
-    const $options = $select.find(".custom_option");
+    const $options = $select.find(".custom_select_wrapper .custom_option");
 
     $selected.on("click", function () {
       $(".custom_select_wrapper").not($select).removeClass("open");
@@ -1043,6 +1043,11 @@ $(document).ready(function () {
     $options.on("click", function () {
       const text = $(this).text();
       const value = $(this).data("value");
+
+      // Remove previous active class
+      $options.removeClass("active");
+      // Add active to the selected one
+      $(this).addClass("active");
 
       $selected.text(text);
       $select.removeClass("open");
@@ -1057,6 +1062,7 @@ $(document).ready(function () {
     }
   });
 });
+
 // theinsured__form-item
 $(document).ready(function () {
   function updateTouristTitles() {
@@ -1447,13 +1453,9 @@ function initNominationInput($block) {
     }
   }
 
-  $input.on("focus input blur", function () {
-    updateTitleState();
-  });
+  $input.on("focus input blur", updateTitleState);
+  updateTitleState();
 
-  updateTitleState(); // initial state
-
-  // ✅ DROPDOWN va boshqa funksiyalarni avvalgidek ishlashiga ruxsat
   $input.on("focus", function () {
     $dropdown.stop(true, true).slideDown(200);
   });
@@ -1466,20 +1468,29 @@ function initNominationInput($block) {
 
   function updateInputFromCheckboxes() {
     let selected = [];
-    $dropdown.find("input[type='checkbox']:checked").each(function () {
-      selected.push($(this).val());
+
+    $dropdown.find("input[type='checkbox']").each(function () {
+      const $checkbox = $(this);
+      const $label = $checkbox.closest("label");
+
+      if ($checkbox.is(":checked")) {
+        selected.push($checkbox.val());
+        $label.addClass("checkbox_checked");
+      } else {
+        $label.removeClass("checkbox_checked");
+      }
     });
+
     $input.val(selected.join(", ") + (selected.length > 0 ? ", " : ""));
-    updateTitleState(); // input yangilanganidan so‘ng tekshiramiz
+    updateTitleState();
+
     $sublinks.each(function () {
       const spanText = $(this).text().trim();
       $(this).toggleClass("active", selected.includes(spanText));
     });
   }
 
-  $dropdown.find("input[type='checkbox']").on("change", function () {
-    updateInputFromCheckboxes();
-  });
+  $dropdown.find("input[type='checkbox']").on("change", updateInputFromCheckboxes);
 
   $input.on("input", function () {
     let inputValue = $input.val().trim();
@@ -1491,7 +1502,10 @@ function initNominationInput($block) {
       .filter((v) => v !== "");
 
     $dropdown.find("input[type='checkbox']").each(function () {
-      $(this).prop("checked", values.includes($(this).val()));
+      const $checkbox = $(this);
+      const isChecked = values.includes($checkbox.val());
+      $checkbox.prop("checked", isChecked);
+      $checkbox.closest("label").toggleClass("checkbox_checked", isChecked);
     });
 
     $sublinks.each(function () {
@@ -1504,8 +1518,7 @@ function initNominationInput($block) {
       $dropdown.find("label").show();
     } else {
       $dropdown.find("label").each(function () {
-        const checkbox = $(this).find("input[type='checkbox']");
-        const val = checkbox.val();
+        const val = $(this).find("input[type='checkbox']").val();
         $(this).toggle(val.toLowerCase().startsWith(lastTerm.toLowerCase()));
       });
     }
@@ -1561,7 +1574,8 @@ function initNominationInput($block) {
 
   $sublinks.on("click", function () {
     const clickedText = $(this).text().trim();
-    let current = $input.val()
+    let current = $input
+      .val()
       .split(",")
       .map((v) => v.trim())
       .filter((v) => v !== "");
@@ -1575,8 +1589,12 @@ function initNominationInput($block) {
     }
 
     $input.val(current.join(", ") + (current.length > 0 ? ", " : ""));
+
     $dropdown.find("input[type='checkbox']").each(function () {
-      $(this).prop("checked", current.includes($(this).val()));
+      const $checkbox = $(this);
+      const isChecked = current.includes($checkbox.val());
+      $checkbox.prop("checked", isChecked);
+      $checkbox.closest("label").toggleClass("checkbox_checked", isChecked);
     });
 
     updateTitleState();
@@ -1584,21 +1602,11 @@ function initNominationInput($block) {
   });
 }
 
-// // ✅ Funksiyani ishga tushirish
-
-$(".nomination1").each(function () {
-      $('.sublink').click(function () {
-      $('.sublink').removeClass('active');
-      $(this).addClass('active');
-    });
+// ✅ Har bir blok uchun ishga tushirish
+$(".nomination1, .nomination2").each(function () {
+  $(this).find('.sublink').click(function () {
+    $(this).closest(".dropdown__menu").find('.sublink').removeClass('active');
+    $(this).addClass('active');
+  });
   initNominationInput($(this));
-  
-});
-$(".nomination2").each(function () {
-  $('.sublink').click(function () {
-  $('.sublink').removeClass('active');
-  $(this).addClass('active');
-});
-initNominationInput($(this));
-
 });

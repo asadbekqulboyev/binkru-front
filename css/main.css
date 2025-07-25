@@ -9446,8 +9446,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 4px;
   height: 56px;
   line-height: 16px;
-  color: #999999;
   align-items: center;
+  font-weight: 400;
+    font-size: 14px;
+  color: #999999 !important;
 }
 
 .custom_select_options {
@@ -9481,6 +9483,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   white-space: normal;
   word-break: break-word;
   background: #fff;
+ 
+}
+.custom_option.active{
+  background-color: #555;
+  color: #fff !important;
+  transition: background-color 0.3s ease;
 }
 
 .custom_option:hover {
@@ -9493,19 +9501,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .sublink{
   gap: 3px;
-  opacity: .4;
 
 }
-.sublink.active{
-  opacity: 1;
-}
+
 .sublink span{
   cursor: pointer;
-  color: #199bc54d;
+  color: #199bc5;
 }
 .sublink span.active{
-    opacity: 1;
-    color: #199bc5;
+    color:#555;
 }
 .nomination2 .dropdown__menu{
   top: 52px !important;
@@ -9534,3 +9538,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: #888;
 } 
 
+.form_input input[name="nomination"]{
+  /* display: none; */
+  font-weight: 400;
+    font-size: 14px;
+  color: #999999 !important;
+  opacity: .799;
+}
+.checkbox_checked {
+  background-color: #555; 
+  color: #fff !important;
+  transition: background-color 0.3s ease;
+}
