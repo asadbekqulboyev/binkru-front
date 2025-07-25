@@ -1033,7 +1033,7 @@ $(document).ready(function () {
   $(".custom_select_wrapper").each(function () {
     const $select = $(this);
     const $selected = $select.find(".custom_select_selected");
-    const $options = $select.find(".custom_select_wrapper .custom_option");
+    const $options = $select.find(".custom_option");
 
     $selected.on("click", function () {
       $(".custom_select_wrapper").not($select).removeClass("open");
@@ -1044,9 +1044,9 @@ $(document).ready(function () {
       const text = $(this).text();
       const value = $(this).data("value");
 
-      // Remove previous active class
+      // Avvalgi active classni olib tashlash
       $options.removeClass("active");
-      // Add active to the selected one
+      // Tanlangan optionga active class berish
       $(this).addClass("active");
 
       $selected.text(text);
@@ -1062,6 +1062,7 @@ $(document).ready(function () {
     }
   });
 });
+
 
 // theinsured__form-item
 $(document).ready(function () {

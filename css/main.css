@@ -9489,6 +9489,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: #555;
   color: #fff !important;
   transition: background-color 0.3s ease;
+  
+}
+.custom_option.active:hover{
+  background: #fff;
+  color: #555;
 }
 
 .custom_option:hover {
