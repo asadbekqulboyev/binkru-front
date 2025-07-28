@@ -1604,7 +1604,7 @@ function initNominationInput($block) {
 }
 
 // ✅ Har bir blok uchun ishga tushirish
-$(".nomination1, .nomination2").each(function () {
+$(".nomination1, .nomination2, .nomination3").each(function () {
   $(this).find('.sublink').click(function () {
     $(this).closest(".dropdown__menu").find('.sublink').removeClass('active');
     $(this).addClass('active');

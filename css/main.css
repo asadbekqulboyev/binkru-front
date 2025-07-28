@@ -9516,7 +9516,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .sublink span.active{
     color:#555;
 }
-.nomination2 .dropdown__menu{
+.nomination2 .dropdown__menu,.nomination3 .dropdown__menu{
   top: 52px !important;
   z-index: 122 !important;
 }
