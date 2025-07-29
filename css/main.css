@@ -4305,7 +4305,7 @@ footer.footer.straxovanie3 .footer__inner {
   position: relative;
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 .wrapper.straxovanie3 .form-groupitem.select::after {
@@ -9438,7 +9438,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: #999999;
   font-weight: 400;
   font-size: 14px;
-  padding: 0px 15px 0 15px;
+  padding: 10px 26px 10px 15px;
   display: flex;
   border: 1px solid #ccc;
   cursor: pointer;
@@ -9450,6 +9450,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: 400;
     font-size: 14px;
   color: #999999 !important;
+  overflow-y: auto;
 }
 
 .custom_select_options {
@@ -9492,8 +9493,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   
 }
 .custom_option.active:hover{
-  background: #fff;
-  color: #555;
+  background: #fff !important;
+  color: #555 !important;
 }
 
 .custom_option:hover {

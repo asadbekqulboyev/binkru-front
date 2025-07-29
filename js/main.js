@@ -1032,37 +1032,50 @@ $(".all_content_link").click(function (e) {
 $(document).ready(function () {
   $(".custom_select_wrapper").each(function () {
     const $select = $(this);
-    const $selected = $select.find(".custom_select_selected");
+    const $input = $select.find(".custom_select_selected");
     const $options = $select.find(".custom_option");
 
-    $selected.on("click", function () {
+    // input bosilganda dropdown ochiladi
+    $input.on("click", function (e) {
+      e.stopPropagation();
       $(".custom_select_wrapper").not($select).removeClass("open");
       $select.toggleClass("open");
     });
 
-    $options.on("click", function () {
-      const text = $(this).text();
-      const value = $(this).data("value");
+    // option bosilganda tanlanadi
+    $options.on("click", function (e) {
+      e.stopPropagation();
+      $(this).toggleClass("active");
 
-      // Avvalgi active classni olib tashlash
-      $options.removeClass("active");
-      // Tanlangan optionga active class berish
-      $(this).addClass("active");
+      const selectedTexts = [];
+      const selectedValues = [];
 
-      $selected.text(text);
-      $select.removeClass("open");
+      $select.find(".custom_option.active").each(function () {
+        selectedTexts.push($(this).text());
+        selectedValues.push($(this).data("value"));
+      });
 
-      console.log(`Tanlangan qiymat (${$select.data("name")}):`, value);
+      $input.val(selectedTexts.join(", "));
+    });
+
+    // input orqali filtering
+    $input.on("input", function () {
+      const query = $(this).val().toLowerCase();
+
+      $options.each(function () {
+        const text = $(this).text().toLowerCase();
+        $(this).toggle(text.includes(query));
+      });
     });
   });
 
+  // tashqariga bosilsa dropdown yopiladi
   $(document).on("click", function (e) {
     if (!$(e.target).closest(".custom_select_wrapper").length) {
       $(".custom_select_wrapper").removeClass("open");
     }
   });
 });
-
 
 // theinsured__form-item
 $(document).ready(function () {
